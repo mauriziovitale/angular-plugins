@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "lite-serve",
+  "version": "0.0.1",
+  "schematics": {
+    "liteServe": {
+      "factory": "./src/schematics/lite-serve/schematic",
+      "schema": "./src/schematics/lite-serve/schema.json",
+      "description": "lite-serve schematic"
+    }
+  }
+}

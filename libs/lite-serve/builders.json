@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
+  "builders": {
+    "build": {
+      "implementation": "./src/builders/lite-serve/builder",
+      "schema": "./src/builders/lite-serve/schema.json",
+      "description": "lite-serve builder"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "npmScope": "angular-plugins",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "lite-serve": {
+      "tags": []
+    },
+    "lite-serve-e2e": {
+      "tags": [],
+      "implicitDependencies": ["lite-serve"]
+    }
+  }
+}
