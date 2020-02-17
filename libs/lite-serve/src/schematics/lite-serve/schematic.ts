@@ -76,7 +76,7 @@ export default function(options: LiteServeSchematicSchema): Rule {
         })
         .targets.add({
           name: 'build',
-          builder: '@angular-plugins/lite-serve:build'
+          builder: '@angular-plugins/lite-serve:dist-serve'
         });
     }),
     addProjectToNxJsonInTree(normalizedOptions.projectName, {

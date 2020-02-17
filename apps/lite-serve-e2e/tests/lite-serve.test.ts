@@ -13,8 +13,8 @@ describe('lite-serve e2e', () => {
       `generate @angular-plugins/lite-serve:liteServe ${plugin}`
     );
 
-    const result = await runNxCommandAsync(`build ${plugin}`);
-    expect(result.stdout).toContain('Builder ran');
+    const result = await runNxCommandAsync(`build ${plugin} --port=432 --outdir=fake`);
+    expect(result.stdout).toContain(`lite-serve serving folder fake on port 432`);
 
     done();
   });

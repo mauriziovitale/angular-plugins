@@ -3,5 +3,14 @@
   "version": "0.0.1",
   "main": "src/index.js",
   "schematics": "./collection.json",
-  "builders": "./builders.json"
+  "builders": "./builders.json",
+  "author": "Maurizio Vitale",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mauriziovitale/angular-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mauriziovitale/angular-plugins.git/issues"
+  }
 }

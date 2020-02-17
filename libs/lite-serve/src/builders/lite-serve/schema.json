@@ -4,6 +4,19 @@
   "title": "LiteServe builder",
   "description": "",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "port": {
+      "type": "integer"
+    },
+    "logLevel": {
+      "type": "string"
+    },
+    "open": {
+      "type": "boolean"
+    },
+    "outdir": {
+      "type": "string"
+    }
+  },
   "required": []
 }
