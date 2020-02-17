@@ -1,6 +1,7 @@
 {
   "name": "@angular-plugins/lite-serve",
   "version": "0.0.1",
+  "description": "Custom builder to run lite-server with options",
   "main": "src/index.js",
   "schematics": "./collection.json",
   "builders": "./builders.json",
