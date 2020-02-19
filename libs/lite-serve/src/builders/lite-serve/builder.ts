@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LiteServeBuilderSchema } from './schema';
 
-const browserSync = require('browser-sync');
+import * as browserSync from 'browser-sync'
 browserSync.create();
 export function runBuilder(
   options: LiteServeBuilderSchema,
@@ -16,15 +16,15 @@ export function runBuilder(
 ): Observable<BuilderOutput> {
   return of({ success: true }).pipe(
     tap(async() => {
-      let outputPath: string = 'dist';
+      let outputPath = 'dist';
       if (options.browserTarget) {
         const browserTarget = targetFromTargetString(options.browserTarget);
         const rawBrowserOptions = await context.getTargetOptions(browserTarget);
-        outputPath = <string>rawBrowserOptions.outputPath;
+        outputPath = rawBrowserOptions.outputPath as string;
       }
       browserSync.init({
         port: options.port,
-        server:  options.outdir,
+        server: outputPath,
         watch: false,
         open: options.open,
         logLevel: options.logLevel
