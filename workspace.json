@@ -65,7 +65,7 @@
           "builder": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "lite-serve:build",
-            "npmPackageName": "@angular-plugins/lite-serve",
+            "npmPackageName": "@angular-custom-builders/lite-serve",
             "pluginOutputPath": "dist/libs/lite-serve",
             "jestConfig": "apps/lite-serve-e2e/jest.config.js",
             "tsSpecConfig": "apps/lite-serve-e2e/tsconfig.spec.json"

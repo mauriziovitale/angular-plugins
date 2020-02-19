@@ -5,17 +5,29 @@
   "description": "",
   "type": "object",
   "properties": {
+    "browserTarget": {
+    "type": "string",
+      "description": "Target to serve.",
+      "pattern": "^[^:\\s]+:[^:\\s]+(:[^\\s]+)?$"
+    },
     "port": {
-      "type": "integer"
+      "type": "number",
+      "description": "Port to listen on.",
+      "default": 4200
     },
     "logLevel": {
       "type": "string"
     },
-    "open": {
-      "type": "boolean"
+    "watch": {
+      "type": "boolean",
+      "description": "Rebuild on change.",
+      "default": false
     },
-    "outdir": {
-      "type": "string"
+    "open": {
+      "type": "boolean",
+      "description": "Opens the url in default browser.",
+      "default": false,
+      "alias": "o"
     }
   },
   "required": []

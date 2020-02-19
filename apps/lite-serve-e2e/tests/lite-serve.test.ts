@@ -8,13 +8,13 @@ import {
 describe('lite-serve e2e', () => {
   it('should create lite-serve', async done => {
     const plugin = uniq('lite-serve');
-    ensureNxProject('@angular-plugins/lite-serve', 'dist/libs/lite-serve');
+    ensureNxProject('@angular-custom-builders/lite-serve', 'dist/libs/lite-serve');
     await runNxCommandAsync(
-      `generate @angular-plugins/lite-serve:liteServe ${plugin}`
+      `generate @angular-custom-builders/lite-serve:liteServe ${plugin}`
     );
 
-    const result = await runNxCommandAsync(`build ${plugin} --port=432 --outdir=fake`);
-    expect(result.stdout).toContain(`lite-serve serving folder fake on port 432`);
+    const result = await runNxCommandAsync(`run ${plugin}:lite-server --port=432`);
+    expect(result.stdout).toContain(`lite-serve serving folder dist on port 432`);
 
     done();
   });
@@ -22,9 +22,9 @@ describe('lite-serve e2e', () => {
   describe('--directory', () => {
     it('should create src in the specified directory', async done => {
       const plugin = uniq('lite-serve');
-      ensureNxProject('@angular-plugins/lite-serve', 'dist/libs/lite-serve');
+      ensureNxProject('@angular-custom-builders/lite-serve', 'dist/libs/lite-serve');
       await runNxCommandAsync(
-        `generate @angular-plugins/lite-serve:liteServe ${plugin} --directory subdir`
+        `generate @angular-custom-builders/lite-serve:liteServe ${plugin} --directory subdir`
       );
       expect(() =>
         checkFilesExist(`libs/subdir/${plugin}/src/index.ts`)
@@ -36,9 +36,9 @@ describe('lite-serve e2e', () => {
   describe('--tags', () => {
     it('should add tags to nx.json', async done => {
       const plugin = uniq('lite-serve');
-      ensureNxProject('@angular-plugins/lite-serve', 'dist/libs/lite-serve');
+      ensureNxProject('@angular-custom-builders/lite-serve', 'dist/libs/lite-serve');
       await runNxCommandAsync(
-        `generate @angular-plugins/lite-serve:liteServe ${plugin} --tags e2etag,e2ePackage`
+        `generate @angular-custom-builders/lite-serve:liteServe ${plugin} --tags e2etag,e2ePackage`
       );
       const nxJson = readJson('nx.json');
       expect(nxJson.projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);

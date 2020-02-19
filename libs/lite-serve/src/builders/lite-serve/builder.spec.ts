@@ -4,7 +4,7 @@ import { schema } from '@angular-devkit/core';
 import { join } from 'path';
 import { LiteServeBuilderSchema } from './schema';
 
-const options: LiteServeBuilderSchema = { port: 1234, outdir: 'fakedir'};
+const options: LiteServeBuilderSchema = { port: 1234, browserTarget: 'lite-serve:build', open: false, logLevel: 'silent', watch: false};
 
 describe('Command Runner Builder', () => {
   let architect: Architect;
@@ -23,9 +23,10 @@ describe('Command Runner Builder', () => {
   });
 
   it('can run', async () => {
+    options.browserTarget = undefined;
     // A "run" can have multiple outputs, and contains progress information.
     const run = await architect.scheduleBuilder(
-      '@angular-plugins/lite-serve:dist-serve',
+      '@angular-custom-builders/lite-serve:dist-serve',
       options
     ); // We pass the logger for checking later.
 

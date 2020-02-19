@@ -10,7 +10,7 @@ describe('lite-serve schematic', () => {
   const options: LiteServeSchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
-    '@angular-plugins/lite-serve',
+    '@angular-custom-builders/lite-serve',
     join(__dirname, '../../../collection.json')
   );
 

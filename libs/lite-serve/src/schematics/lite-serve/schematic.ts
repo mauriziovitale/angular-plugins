@@ -75,8 +75,9 @@ export default function(options: LiteServeSchematicSchema): Rule {
           projectType
         })
         .targets.add({
-          name: 'build',
-          builder: '@angular-plugins/lite-serve:dist-serve'
+          name: 'lite-server',
+          builder: '@angular-custom-builders/lite-serve:dist-serve',
+          options: { port: 4200}
         });
     }),
     addProjectToNxJsonInTree(normalizedOptions.projectName, {
