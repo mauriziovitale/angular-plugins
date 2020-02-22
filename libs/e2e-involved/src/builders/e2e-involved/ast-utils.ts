@@ -191,14 +191,45 @@ export function getClassDeclarationName(
   return res;
 }
 
+export function getInterfaceDeclarationName(
+  source: ts.SourceFile
+): Set<string> {
+  const res = new Set<string>([]);
+  getSourceNodes(source)
+    .filter(node => {
+      return (
+        node.kind === ts.SyntaxKind.InterfaceDeclaration
+      );
+    })
+    .filter( (interfaceDeclaration: ts.InterfaceDeclaration) => {
+        res.add(interfaceDeclaration.name.escapedText.toString());
+    })
+  return res;
+}
+
 export function findClassName(fileList: Set<string>): Set<string> {
   let classNameList = new Set<string>([]);
-  Array.from(fileList.values()).forEach( (file) => {
-    const sourceFile = getTsSourceFile(file);
-    if (sourceFile) {
-      classNameList = getClassDeclarationName(sourceFile);
-    }
-  });
+  if (fileList.size > 0) {
+    Array.from(fileList.values()).forEach( (file) => {
+      const sourceFile = getTsSourceFile(file);
+      if (sourceFile) {
+        classNameList = getClassDeclarationName(sourceFile);
+      }
+    });
+  }
+  return classNameList;
+}
+
+export function findInterfaceName(fileList: Set<string>): Set<string> {
+  let classNameList = new Set<string>([]);
+  if (fileList.size > 0) {
+    Array.from(fileList.values()).forEach( (file) => {
+      const sourceFile = getTsSourceFile(file);
+      if (sourceFile) {
+        classNameList = getInterfaceDeclarationName(sourceFile);
+      }
+    });
+  }
   return classNameList;
 }
 
