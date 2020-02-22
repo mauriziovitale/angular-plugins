@@ -72,10 +72,208 @@
           }
         }
       }
+    },
+    "e2e-involved": {
+      "root": "libs/e2e-involved",
+      "sourceRoot": "libs/e2e-involved/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/e2e-involved/.eslintrc",
+            "tsConfig": [
+              "libs/e2e-involved/tsconfig.lib.json",
+              "libs/e2e-involved/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/e2e-involved/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/e2e-involved/jest.config.js",
+            "tsConfig": "libs/e2e-involved/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/e2e-involved",
+            "tsConfig": "libs/e2e-involved/tsconfig.lib.json",
+            "packageJson": "libs/e2e-involved/package.json",
+            "main": "libs/e2e-involved/src/index.ts",
+            "assets": [
+              "libs/e2e-involved/*.md",
+              {
+                "input": "./libs/e2e-involved/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/e2e-involved",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/e2e-involved",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "e2e-involved-e2e": {
+      "projectType": "application",
+      "root": "apps/e2e-involved-e2e",
+      "sourceRoot": "apps/e2e-involved-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "e2e-involved:build",
+            "npmPackageName": "@angular-plugins/e2e-involved",
+            "pluginOutputPath": "dist/libs/e2e-involved",
+            "jestConfig": "apps/e2e-involved-e2e/jest.config.js",
+            "tsSpecConfig": "apps/e2e-involved-e2e/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "involved-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/involved-app",
+      "sourceRoot": "apps/involved-app/src",
+      "prefix": "angular-plugins",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/involved-app",
+            "index": "apps/involved-app/src/index.html",
+            "main": "apps/involved-app/src/main.ts",
+            "polyfills": "apps/involved-app/src/polyfills.ts",
+            "tsConfig": "apps/involved-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/involved-app/src/favicon.ico",
+              "apps/involved-app/src/assets"
+            ],
+            "styles": ["apps/involved-app/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/involved-app/src/environments/environment.ts",
+                  "with": "apps/involved-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "involved-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "involved-app:build:production"
+            }
+          }
+        },
+        "involved": {
+          "builder": "@angular-plugins/e2e-involved:build",
+          "options": {
+            "browserTarget": "involved-app:build"
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "involved-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/involved-app/tsconfig.app.json",
+              "apps/involved-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/involved-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/involved-app/src/test.ts",
+            "tsConfig": "apps/involved-app/tsconfig.spec.json",
+            "karmaConfig": "apps/involved-app/karma.conf.js",
+            "polyfills": "apps/involved-app/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "involved-app-e2e": {
+      "root": "apps/involved-app-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/involved-app-e2e/protractor.conf.js",
+            "devServerTarget": "involved-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "involved-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/involved-app-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/involved-app-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
     "@nrwl/workspace": {
@@ -128,6 +326,13 @@
       "application": {
         "linter": "eslint"
       }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "karma"
     }
   }
 }

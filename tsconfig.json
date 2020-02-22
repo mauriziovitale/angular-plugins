@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-custom-builders/lite-serve": ["libs/lite-serve/src/index.ts"]
+      "@angular-custom-builders/lite-serve": ["libs/lite-serve/src/index.ts"],
+      "@angular-plugins/e2e-involved": ["libs/e2e-involved/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

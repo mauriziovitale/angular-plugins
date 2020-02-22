@@ -23,13 +23,27 @@
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
   "private": true,
   "dependencies": {
-    "browser-sync": "^2.26.7"
+    "@angular-plugins/e2e-involved": "file:dist/libs/e2e-involved",
+    "@angular/animations": "9.0.0",
+    "@angular/common": "9.0.0",
+    "@angular/compiler": "9.0.0",
+    "@angular/core": "9.0.0",
+    "@angular/forms": "9.0.0",
+    "@angular/platform-browser": "9.0.0",
+    "@angular/platform-browser-dynamic": "9.0.0",
+    "@angular/router": "9.0.0",
+    "browser-sync": "^2.26.7",
+    "core-js": "^2.5.4",
+    "rxjs": "~6.5.0",
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
+    "@nrwl/angular": "^9.0.1",
     "@nrwl/nx-plugin": "^9.0.1",
     "@nrwl/workspace": "9.0.1",
     "@types/node": "~8.9.4",
@@ -46,6 +60,20 @@
     "@nrwl/jest": "9.0.1",
     "jest": "24.1.0",
     "@types/jest": "24.0.9",
-    "ts-jest": "24.0.0"
+    "ts-jest": "24.0.0",
+    "@angular/compiler-cli": "9.0.0",
+    "@angular/language-service": "9.0.0",
+    "@angular-devkit/build-angular": "0.900.1",
+    "codelyzer": "~5.0.1",
+    "karma": "~4.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "@types/jasmine": "~2.8.8",
+    "protractor": "~5.4.0",
+    "@types/jasminewd2": "~2.0.3"
   }
 }

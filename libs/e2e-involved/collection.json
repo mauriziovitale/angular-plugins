@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "e2e-involved",
+  "version": "0.0.1",
+  "schematics": {
+    "e2eInvolved": {
+      "factory": "./src/schematics/e2e-involved/schematic",
+      "schema": "./src/schematics/e2e-involved/schema.json",
+      "description": "e2e-involved schematic"
+    }
+  }
+}

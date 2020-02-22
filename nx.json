@@ -17,6 +17,20 @@
     "lite-serve-e2e": {
       "tags": [],
       "implicitDependencies": ["lite-serve"]
+    },
+    "e2e-involved": {
+      "tags": []
+    },
+    "e2e-involved-e2e": {
+      "tags": [],
+      "implicitDependencies": ["e2e-involved"]
+    },
+    "involved-app": {
+      "tags": []
+    },
+    "involved-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["involved-app"]
     }
   }
 }
