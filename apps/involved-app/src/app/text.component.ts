@@ -4,5 +4,5 @@ import { Component } from '@angular/core';
   selector: 'angular-plugins-text'
 })
 export class TextComponent {
-  title = 'my-text';
+  title = 'my-text-1';
 }
