@@ -195,9 +195,19 @@ export function findClassName(fileList: Set<string>): Set<string> {
   let classNameList = new Set<string>([]);
   Array.from(fileList.values()).forEach( (file) => {
     const sourceFile = getTsSourceFile(file);
-    classNameList = getClassDeclarationName(sourceFile);
+    if (sourceFile) {
+      classNameList = getClassDeclarationName(sourceFile);
+    }
   });
   return classNameList;
+}
+
+export function convertComponentToSelectorFile(fileList: Set<string>): Set<string> {
+  const selectorList = new Set<string>([]);
+  Array.from(fileList.values()).forEach( (file) => {
+    selectorList.add(file.replace('.component.','.selector.'));
+  });
+  return selectorList;
 }
 
 export function findClassWithInvolvedImport(folderPath: string, type: string, classList: Set<string>): Set<string> {
@@ -206,7 +216,9 @@ export function findClassWithInvolvedImport(folderPath: string, type: string, cl
     const e2eTests = allFilesInDir(folderPath, type);
     e2eTests.forEach( (test) => {
       const source = getTsSourceFile(test.name);
-      classWithImports = getDecoratorMetadata2(source, className);
+      if (source) {
+        classWithImports = getDecoratorMetadata2(source, className);
+      }
     });
   });
   return classWithImports;
@@ -483,23 +495,27 @@ function getMatchingObjectLiteralElement(
 }
 
 export function getTsSourceFile(pathFile: string): ts.SourceFile {
-  const buffer = readFileSync(pathFile);
-  if (!buffer) {
-    throw new SchematicsException(`Could not read TS file (${pathFile}).`);
+  let source;
+  try {
+    const buffer = readFileSync(pathFile);
+    if (!buffer) {
+      throw new SchematicsException(`Could not read TS file (${pathFile}).`);
+    }
+    const content = buffer.toString();
+    source = ts.createSourceFile(
+      pathFile,
+      content,
+      ts.ScriptTarget.Latest,
+      true
+    );
+  } catch(error) {
   }
-  const content = buffer.toString();
-  const source = ts.createSourceFile(
-    pathFile,
-    content,
-    ts.ScriptTarget.Latest,
-    true
-  );
 
   return source;
 }
 
 export function allFilesInDir(dirName, fileType) {
-  let res = [];debugger;
+  let res = [];
   try {
     readdirSync(dirName).forEach(c => {
       const child = path.join(dirName, c);
