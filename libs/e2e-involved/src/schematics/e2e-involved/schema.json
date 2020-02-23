@@ -15,7 +15,11 @@
     },
     "browserTarget": {
       "type": "string",
-      "description": "Add tags to the project (used for linting)",
+      "description": "Add tags to the project (used for linting)"
+    },
+    "projectTarget": {
+      "type": "string",
+      "description": "The project target relative to the e2e project"
     },
     "tags": {
       "type": "string",

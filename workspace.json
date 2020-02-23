@@ -248,6 +248,7 @@
     },
     "involved-app-e2e": {
       "root": "apps/involved-app-e2e",
+      "sourceRoot": "apps/involved-app-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
@@ -279,7 +280,8 @@
         "involved": {
           "builder": "@angular-plugins/e2e-involved:build",
           "options": {
-            "browserTarget": "involved-app-e2e:e2elite"
+            "browserTarget": "involved-app-e2e:e2elite",
+            "projectTarget": "involved-app"
           }
         },
         "lint": {
