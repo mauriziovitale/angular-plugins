@@ -13,6 +13,10 @@
       },
       "x-prompt": "What name would you like to use?"
     },
+    "browserTarget": {
+      "type": "string",
+      "description": "Add tags to the project (used for linting)",
+    },
     "tags": {
       "type": "string",
       "description": "Add tags to the project (used for linting)",

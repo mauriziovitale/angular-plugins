@@ -210,8 +210,8 @@
             }
           }
         },
-        "involved": {
-          "builder": "@angular-plugins/e2e-involved:build",
+        "lite-serve": {
+          "builder": "@angular-plugins/lite-serve:dist-serve",
           "options": {
             "browserTarget": "involved-app:build"
           }
@@ -254,12 +254,32 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "apps/involved-app-e2e/protractor.conf.js",
-            "devServerTarget": "involved-app:serve"
+            "devServerTarget": "involved-app:serve",
+            "webdriverUpdate": false
           },
           "configurations": {
             "production": {
               "devServerTarget": "involved-app:serve:production"
             }
+          }
+        },
+        "e2elite": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/involved-app-e2e/protractor.conf.js",
+            "devServerTarget": "involved-app:lite-serve",
+            "webdriverUpdate": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "involved-app:serve:production"
+            }
+          }
+        },
+        "involved": {
+          "builder": "@angular-plugins/e2e-involved:build",
+          "options": {
+            "browserTarget": "involved-app-e2e:e2elite"
           }
         },
         "lint": {

@@ -29,6 +29,7 @@
   "private": true,
   "dependencies": {
     "@angular-plugins/e2e-involved": "file:dist/libs/e2e-involved",
+    "@angular-plugins/lite-serve": "file:dist/libs/lite-serve",
     "@angular/animations": "9.0.0",
     "@angular/common": "9.0.0",
     "@angular/compiler": "9.0.0",

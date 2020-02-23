@@ -7,7 +7,7 @@ export class AppPage {
 
   getTitleText(): Promise<string> {
     return element(
-      by.css('angular-plugins-root .content span')
+      by.css('angular-plugins-root h1')
     ).getText() as Promise<string>;
   }
 }

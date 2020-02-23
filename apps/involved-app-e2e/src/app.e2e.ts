@@ -1,5 +1,4 @@
 import { TextSelector } from './text.selector';
-import { Custom } from './not-valid';
 
 describe('Multi-instance audit log', async () => {
   const textSelector = new TextSelector();

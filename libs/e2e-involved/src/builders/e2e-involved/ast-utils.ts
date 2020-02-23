@@ -235,8 +235,9 @@ export function findInterfaceName(fileList: Set<string>): Set<string> {
 
 export function convertComponentToSelectorFile(fileList: Set<string>): Set<string> {
   const selectorList = new Set<string>([]);
-  Array.from(fileList.values()).forEach( (file) => {
-    selectorList.add(file.replace('.component.','.selector.'));
+  const componentClassName = findClassName(fileList);
+  Array.from(componentClassName.values()).forEach( (componentName) => {
+    selectorList.add(componentName.replace('Component','Selector'));
   });
   return selectorList;
 }
@@ -251,6 +252,14 @@ export function findClassWithInvolvedImport(folderPath: string, type: string, cl
         classWithImports = getDecoratorMetadata2(source, className);
       }
     });
+  });
+  return classWithImports;
+}
+
+export function replaceRelativePath(folderPath: string, classList: Set<string>): Set<string> {
+  const classWithImports = new Set<string>([]);
+  Array.from(classList.values()).forEach( (className) => {
+    classWithImports.add(className.replace(folderPath, '.'));
   });
   return classWithImports;
 }
