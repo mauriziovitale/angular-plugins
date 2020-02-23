@@ -54,7 +54,7 @@ function detectInvolvedTest(context) {
 
   selectorClassNameList.forEach( (name) => context.logger.info(`selector: ${name}`));
 
-  const metaE2EImportSelector = findClassWithInvolvedImport('./apps/involved-app-e2e/src', 'e2e', selectorClassNameList);
+  const metaE2EImportSelector = findClassWithInvolvedImport('./apps/involved-app-e2e/src', 'e2e-spec', selectorClassNameList);
   metaE2EImportSelector.forEach( (e2e) => context.logger.info(`e2e involved: ${e2e}`));
   const metaE2EImportSelectorRelativePath = replaceRelativePath('apps/involved-app-e2e', metaE2EImportSelector);
   return metaE2EImportSelectorRelativePath;

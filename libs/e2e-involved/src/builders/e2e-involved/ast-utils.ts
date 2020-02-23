@@ -243,13 +243,16 @@ export function convertComponentToSelectorFile(fileList: Set<string>): Set<strin
 }
 
 export function findClassWithInvolvedImport(folderPath: string, type: string, classList: Set<string>): Set<string> {
-  let classWithImports = new Set<string>([]);
+  const classWithImports = new Set<string>([]);
   Array.from(classList.values()).forEach( (className) => {
     const e2eTests = allFilesInDir(folderPath, type);
     e2eTests.forEach( (test) => {
       const source = getTsSourceFile(test.name);
       if (source) {
-        classWithImports = getDecoratorMetadata2(source, className);
+        const tmpDecorator = getDecoratorMetadata2(source, className);
+        Array.from(tmpDecorator.values()).forEach( (name) => {
+          classWithImports.add(name);
+        });
       }
     });
   });
