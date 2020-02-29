@@ -3,10 +3,91 @@
 This builder allows you to run a lite-server with an existing dist folder.
 Useful in case of a CI/CD to avoid to build the project as part of the ng e2e command.
 
-## Running unit tests
+The only mandatory option is *browserTarget*. Using the target the *lite-serve* builder is able to figure out the path of the dist folder.
 
-Run `ng test lite-serve` to execute the unit tests via [Jest](https://jestjs.io).
+## Options
+*browserTarget*: Target to serve
 
-## Running e2e
+*port*: Port to listen on. Default 4200
 
-Run `ng e2e lite-serve` to execute the e2e tests
+*logLevel*: Can be either "info", "debug", "warn", or "silent". Default: info
+
+
+*watch*: Rebuild on change. Default false
+
+
+*open*: Opens the url in default browser. Default false
+
+## How to use it
+
+### Basic Configuration
+```json
+"example-app": {
+      "projectType": "application",
+      "root": "apps/example-app",
+      "sourceRoot": "apps/example-app/src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/example-app"
+          }
+        },
+        "lite-serve": {
+          "builder": "@angular-custom-builders/lite-serve:dist-serve",
+          "options": {
+            "browserTarget": "example-app:build"
+          }
+        }
+      }
+```
+
+1. Build the example app to generate the dist folder `dist/apps/example-app`
+```cmd
+nx build example-app
+```
+
+2. Run the e2e without rebuilding the app
+```cmd
+nx run example-app:lite-serve
+```
+
+### Override the default Configuration
+```json
+"example-app": {
+      "projectType": "application",
+      "root": "apps/example-app",
+      "sourceRoot": "apps/example-app/src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/example-app"
+          }
+        },
+        "lite-serve": {
+          "builder": "@angular-custom-builders/lite-serve:dist-serve",
+          "options": {
+            "browserTarget": "example-app:build"
+          },
+          "configuration": {
+            "verbose": {
+              "port": 9999,
+              "open": true,
+              "logLevel": "debug"
+            }
+          }
+        }
+      }
+```
+
+1. Build the example app to generate the dist folder `dist/apps/example-app`
+```cmd
+nx build example-app
+```
+
+2. Run the e2e with a custom configuration
+```cmd
+nx run example-app:lite-serve:verbose
+```
+
