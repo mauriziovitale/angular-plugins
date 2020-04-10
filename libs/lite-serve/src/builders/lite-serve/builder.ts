@@ -14,8 +14,8 @@ export function runBuilder(
   options: LiteServeBuilderSchema,
   context: BuilderContext
 ): Observable<BuilderOutput> {
-  return of({ success: true }).pipe(
-    tap(async() => {
+  return Observable.create(async observer => {
+    try {
       let outputPath = 'dist';
       if (options.browserTarget) {
         const browserTarget = targetFromTargetString(options.browserTarget);
@@ -30,8 +30,12 @@ export function runBuilder(
         logLevel: options.logLevel
       });
       context.logger.info(`lite-serve serving folder ${outputPath} on port ${options.port}`);
-    })
-  );
+      observer.next({ success: true });
+      observer.complete();
+    } catch (e) {
+      observer.error(`ERROR: Something went wrong in @angular-custom-builders/lite-serve - ${e.message}`);
+    }
+  });
 }
 
 export default createBuilder(runBuilder);

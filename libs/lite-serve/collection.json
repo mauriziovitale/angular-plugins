@@ -3,10 +3,11 @@
   "name": "lite-serve",
   "version": "0.0.1",
   "schematics": {
-    "liteServe": {
+    "setup": {
       "factory": "./src/schematics/lite-serve/schematic",
       "schema": "./src/schematics/lite-serve/schema.json",
-      "description": "lite-serve schematic"
+      "description": "Setup the lite-serve for a specific app",
+      "aliases": ["ng-add"]
     }
   }
 }

@@ -6,22 +6,18 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
+      "description": "Name of the existing project",
       "$default": {
         "$source": "argv",
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
     },
-    "tags": {
+    "e2e": {
       "type": "string",
-      "description": "Add tags to the project (used for linting)",
-      "alias": "t"
-    },
-    "directory": {
-      "type": "string",
-      "description": "A directory where the project is placed",
-      "alias": "d"
+      "description": "Name of the existing e2e project",
+      "$comment": "Use this field in case the project e2e does not follow the default convention app-e2e",
+      "alias": "e"
     }
   },
   "required": ["name"]
