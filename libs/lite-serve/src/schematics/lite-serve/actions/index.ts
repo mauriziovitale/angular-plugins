@@ -9,7 +9,6 @@ export function runSetupLiteServe(
   options: LiteServeSchematicSchema
 ) {
   const rulesToApply = updateWorkspace(workspace => {
-    context.logger.error(`Try againagainagainagainagain`);
     const projects = workspace.projects;
     if (projects.has(options.name)) {
       projects.get(options.name).targets.add({
