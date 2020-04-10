@@ -1,5 +1,4 @@
 export interface LiteServeSchematicSchema {
   name: string;
-  tags?: string;
-  directory?: string;
+  e2e?: string;
 }
