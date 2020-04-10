@@ -1,13 +1,8 @@
 import {
   ensureNxProject,
-  newNxProject,
   runNxCommandAsync,
   uniq
 } from '@nrwl/nx-plugin/testing';
-
-import {
-  addProjectToNxJsonInTree
-} from '@nrwl/workspace';
 
 describe('lite-serve e2e', () => {
   it('should create lite-serve', async done => {
