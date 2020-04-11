@@ -10,6 +10,9 @@ git:
 before_install:
   - npm install -g yarn
 
+install: npm install
+
+
 branches:
   only:
   - master
