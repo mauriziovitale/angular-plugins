@@ -21,10 +21,10 @@ jobs:
     include:
         - stage: "Test & Build"
           name: Build
-          script: npm ci && nx run lite-serve:build
+          script: npm install && nx run lite-serve:build
         - stage: "Test & Build"
           name: Test
-          script: nx run lite-serve-e2e:e2e
+          script: npm install && nx run lite-serve-e2e:e2e
           cache: false
 
 cache:
