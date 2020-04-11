@@ -22,7 +22,6 @@ jobs:
         - stage: "Test & Build"
           name: Build
           script: npm ci && nx run lite-serve:build
-
         - stage: "Test & Build"
           name: Test
           script: nx run lite-serve-e2e:e2e
