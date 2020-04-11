@@ -1,0 +1,33 @@
+language: node_js
+dist: trusty
+sudo: required
+node_js:
+  - "12.13.1"
+git:
+  depth: 25
+  quiet: true
+
+branches:
+  only:
+  - master
+  - development
+
+stages:
+  - name: "Test & Build"
+
+install: echo "no install"
+
+jobs:
+    include:
+        - stage: "Test & Build"
+          name: Build
+          script: npm ci && nx run lite-serve:build
+
+        - stage: "Test & Build"
+          name: Test
+          script: nx run lite-serve-e2e:e2e
+          cache: false
+
+cache:
+  directories:
+  - node_modules
