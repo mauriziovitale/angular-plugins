@@ -27,6 +27,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-custom-builders/lite-serve": "file:dist/libs/lite-serve",
     "browser-sync": "^2.26.7"
   },
   "devDependencies": {
