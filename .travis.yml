@@ -15,17 +15,14 @@ branches:
 stages:
   - name: "Test & Build"
 
-install: echo "no install"
-
 jobs:
     include:
         - stage: "Test & Build"
           name: Build
-          script: npm install && nx run lite-serve:build
+          script: nx run lite-serve:build
         - stage: "Test & Build"
           name: Test
-          script: npm install && nx run lite-serve-e2e:e2e
-          cache: false
+          script: nx run lite-serve-e2e:e2e
 
 cache:
   directories:
