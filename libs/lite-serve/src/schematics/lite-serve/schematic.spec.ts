@@ -7,6 +7,7 @@ import { LiteServeSchematicSchema } from './schema';
 
 describe('lite-serve schematic', () => {
   let appTree: Tree;
+
   const options: LiteServeSchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
