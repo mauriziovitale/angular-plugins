@@ -24,7 +24,7 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "semantic-release": "semantic-release --dry-run",
+    "semantic-release": "semantic-release",
     "commit": "git-cz"
   },
   "release": {
