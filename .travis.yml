@@ -28,7 +28,10 @@ jobs:
           script: nx run lite-serve:build
         - stage: "Test & Build"
           name: Test
-          script: nx run lite-serve-e2e:e2e
+          script:
+            - nx run lite-serve-e2e:e2e
+            - npm install file:dist/libs/lite-serve
+            - nx run lite-serve-e2e:e2e
         - stage: deploy
           if: branch == master and type == push && !fork
           node_js: 'node' # pre-installed version
