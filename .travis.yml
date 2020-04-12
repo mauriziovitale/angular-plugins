@@ -30,11 +30,12 @@ jobs:
           name: Test
           script: nx run lite-serve-e2e:e2e
         - stage: deploy
-          if: branch == master && !fork
+          if: branch == master and type == push && !fork
           node_js: 'node' # pre-installed version
           script:
             - npm install -g semantic-release@^15
-            - semantic-release
+            - nx run lite-serve:build
+            - npm run semantic-release
 
 cache:
   directories:
