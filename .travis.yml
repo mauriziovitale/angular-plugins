@@ -1,0 +1,44 @@
+language: node_js
+dist: trusty
+sudo: required
+node_js:
+  - "12.13.1"
+git:
+  depth: 25
+  quiet: true
+
+before_install:
+  - npm install -g yarn
+
+install: npm install
+
+
+branches:
+  only:
+  - master
+  - development
+
+stages:
+  - name: "Test & Build"
+
+jobs:
+    include:
+        - stage: "Test & Build"
+          name: Build
+          script: nx run lite-serve:build
+        - stage: "Test & Build"
+          name: Test
+          script:
+            - nx run lite-serve:build
+            - npm install file:dist/libs/lite-serve
+            - nx run lite-serve-e2e:e2e
+        - stage: deploy
+          if: branch == master and type == push && !fork
+          node_js: 'node' # pre-installed version
+          script:
+            - npm install -g semantic-release@^15
+            - nx run lite-serve:build
+            - npm run semantic-release
+
+cache:
+  directories:

@@ -1,6 +1,6 @@
 {
   "name": "angular-plugins",
-  "version": "0.1.1",
+  "version": "0.1.5",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -23,30 +23,47 @@
     "update": "nx migrate latest",
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "semantic-release": "semantic-release",
+    "commit": "git-cz"
+  },
+  "release": {
+    "pkgRoot": "dist/libs/lite-serve"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "private": true,
   "dependencies": {
-    "@angular-custom-builders/lite-serve": "file:dist/libs/lite-serve",
     "browser-sync": "^2.26.7"
   },
   "devDependencies": {
+    "@nrwl/eslint-plugin-nx": "9.0.1",
+    "@nrwl/jest": "9.0.1",
     "@nrwl/nx-plugin": "^9.0.1",
     "@nrwl/workspace": "9.0.1",
+    "@types/jest": "24.0.9",
     "@types/node": "~8.9.4",
+    "@typescript-eslint/eslint-plugin": "2.19.2",
+    "@typescript-eslint/parser": "2.19.2",
+    "commitizen": "^4.0.4",
+    "cz-conventional-changelog": "^3.1.0",
     "dotenv": "6.2.0",
-    "eslint": "6.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "6.0.0",
+    "jest": "24.1.0",
     "prettier": "1.18.2",
+    "semantic-release": "^17.0.4",
+    "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.7.4",
-    "@nrwl/eslint-plugin-nx": "9.0.1",
-    "@typescript-eslint/parser": "2.19.2",
-    "@typescript-eslint/eslint-plugin": "2.19.2",
-    "eslint-config-prettier": "6.0.0",
-    "@nrwl/jest": "9.0.1",
-    "jest": "24.1.0",
-    "@types/jest": "24.0.9",
-    "ts-jest": "24.0.0"
+    "typescript": "~3.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mauriziovitale/angular-plugins.git"
   }
 }

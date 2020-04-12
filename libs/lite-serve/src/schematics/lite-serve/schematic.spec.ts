@@ -7,6 +7,7 @@ import { LiteServeSchematicSchema } from './schema';
 
 describe('lite-serve schematic', () => {
   let appTree: Tree;
+
   const options: LiteServeSchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
@@ -20,7 +21,7 @@ describe('lite-serve schematic', () => {
 
   it('should run successfully', async () => {
     await expect(
-      testRunner.runSchematicAsync('liteServe', options, appTree).toPromise()
+      testRunner.runSchematicAsync('setup', options, appTree).toPromise()
     ).resolves.not.toThrowError();
   });
 });
