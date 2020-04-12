@@ -20,7 +20,7 @@ describe('lite-serve schematic', () => {
 
   it('should run successfully', async () => {
     await expect(
-      testRunner.runSchematicAsync('liteServe', options, appTree).toPromise()
+      testRunner.runSchematicAsync('setup', options, appTree).toPromise()
     ).resolves.not.toThrowError();
   });
 });
