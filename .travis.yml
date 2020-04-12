@@ -29,7 +29,7 @@ jobs:
         - stage: "Test & Build"
           name: Test
           script:
-            - nx run lite-serve-e2e:e2e
+            - nx run lite-serve:build
             - npm install file:dist/libs/lite-serve
             - nx run lite-serve-e2e:e2e
         - stage: deploy
