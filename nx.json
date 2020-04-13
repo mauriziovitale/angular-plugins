@@ -17,6 +17,13 @@
     "lite-serve-e2e": {
       "tags": [],
       "implicitDependencies": ["lite-serve"]
+    },
+    "aws-actions": {
+      "tags": []
+    },
+    "aws-actions-e2e": {
+      "tags": [],
+      "implicitDependencies": ["aws-actions"]
     }
   }
 }
