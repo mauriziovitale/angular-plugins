@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
+  "builders": {
+    "pull": {
+      "implementation": "./src/builders/aws-actions/builder",
+      "schema": "./src/builders/aws-actions/schema.json",
+      "description": "AWS actions pull: download a file from s3 bucket to local"
+    }
+  }
+}

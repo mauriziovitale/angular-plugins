@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "aws-actions",
+  "version": "0.0.1",
+  "schematics": {
+    "pull": {
+      "factory": "./src/schematics/aws-actions/schematic",
+      "schema": "./src/schematics/aws-actions/schema.json",
+      "description": "aws-actions schematic"
+    }
+  }
+}

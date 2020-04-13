@@ -72,6 +72,78 @@
           }
         }
       }
+    },
+    "aws-actions": {
+      "root": "libs/aws-actions",
+      "sourceRoot": "libs/aws-actions/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/aws-actions/.eslintrc",
+            "tsConfig": [
+              "libs/aws-actions/tsconfig.lib.json",
+              "libs/aws-actions/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/aws-actions/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/aws-actions/jest.config.js",
+            "tsConfig": "libs/aws-actions/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/aws-actions",
+            "tsConfig": "libs/aws-actions/tsconfig.lib.json",
+            "packageJson": "libs/aws-actions/package.json",
+            "main": "libs/aws-actions/src/index.ts",
+            "assets": [
+              "libs/aws-actions/*.md",
+              {
+                "input": "./libs/aws-actions/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/aws-actions",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/aws-actions",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "aws-actions-e2e": {
+      "projectType": "application",
+      "root": "apps/aws-actions-e2e",
+      "sourceRoot": "apps/aws-actions-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "aws-actions:build",
+            "npmPackageName": "@angular-plugins/aws-actions",
+            "pluginOutputPath": "dist/libs/aws-actions",
+            "jestConfig": "apps/aws-actions-e2e/jest.config.js",
+            "tsSpecConfig": "apps/aws-actions-e2e/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
