@@ -38,7 +38,7 @@ jobs:
           script:
             - npm install -g semantic-release@^15
             - nx run lite-serve:build
-            - npm run semantic-release
+            # - npm run semantic-release
 
 cache:
   directories:
