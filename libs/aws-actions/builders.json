@@ -2,9 +2,14 @@
   "$schema": "../../node_modules/@angular-devkit/architect/src/builders-schema.json",
   "builders": {
     "pull": {
-      "implementation": "./src/builders/aws-actions/builder",
-      "schema": "./src/builders/aws-actions/schema.json",
+      "implementation": "./src/builders/aws-actions/pull/builder",
+      "schema": "./src/builders/aws-actions/pull/schema.json",
       "description": "AWS actions pull: download a file from s3 bucket to local"
+    },
+    "push": {
+      "implementation": "./src/builders/aws-actions/push/builder",
+      "schema": "./src/builders/aws-actions/push/schema.json",
+      "description": "AWS actions push: upload a local artifact to s3 bucket"
     }
   }
 }

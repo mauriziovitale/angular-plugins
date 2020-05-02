@@ -4,9 +4,14 @@
   "version": "0.0.1",
   "schematics": {
     "pull": {
-      "factory": "./src/schematics/aws-actions/schematic",
-      "schema": "./src/schematics/aws-actions/schema.json",
-      "description": "aws-actions schematic"
+      "factory": "./src/schematics/aws-actions/pull/schematic",
+      "schema": "./src/schematics/aws-actions/pull/schema.json",
+      "description": "aws-actions pull schematic"
+    },
+    "push": {
+      "factory": "./src/schematics/aws-actions/push/schematic",
+      "schema": "./src/schematics/aws-actions/push/schema.json",
+      "description": "aws-actions push schematic"
     }
   }
 }
