@@ -25,13 +25,15 @@ export function runBuilder(
       browserSync.init({
         port: options.port,
         server: outputPath,
-        watch: false,
+        watch: !!options.watch,
         open: options.open,
         logLevel: options.logLevel
       });
       context.logger.info(`lite-serve serving folder ${outputPath} on port ${options.port}`);
       observer.next({ success: true });
-      observer.complete();
+      if (!options.watch) {
+        observer.complete();
+      }
     } catch (e) {
       observer.error(`ERROR: Something went wrong in @angular-custom-builders/lite-serve - ${e.message}`);
     }
