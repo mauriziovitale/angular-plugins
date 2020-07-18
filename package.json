@@ -37,7 +37,7 @@
   },
   "private": true,
   "dependencies": {
-    "browser-sync": "^2.26.7"
+    "browser-sync": "^2.26.10"
   },
   "devDependencies": {
     "@nrwl/eslint-plugin-nx": "9.5.1",
