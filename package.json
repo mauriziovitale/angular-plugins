@@ -40,7 +40,7 @@
     "browser-sync": "^2.26.7"
   },
   "devDependencies": {
-    "@nrwl/eslint-plugin-nx": "9.0.1",
+    "@nrwl/eslint-plugin-nx": "9.5.1",
     "@nrwl/jest": "9.5.1",
     "@nrwl/nx-plugin": "^9.5.1",
     "@nrwl/workspace": "9.5.1",
