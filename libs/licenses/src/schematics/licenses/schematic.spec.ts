@@ -3,14 +3,14 @@ import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import { createEmptyWorkspace } from '@nrwl/workspace/testing';
 import { join } from 'path';
 
-import { AwsActionsSchematicSchema } from './schema';
+import { LicensesSchematicSchema } from './schema';
 
-describe('aws-actions schematic', () => {
+describe('licenses schematic', () => {
   let appTree: Tree;
-  const options: AwsActionsSchematicSchema = { name: 'test' };
+  const options: LicensesSchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
-    '@angular-custom-builders/aws-actions',
+    '@angular-custom-builders/licenses',
     join(__dirname, '../../../collection.json')
   );
 
@@ -20,7 +20,7 @@ describe('aws-actions schematic', () => {
 
   it('should run successfully', async () => {
     await expect(
-      testRunner.runSchematicAsync('awsActions', options, appTree).toPromise()
+      testRunner.runSchematicAsync('licenses', options, appTree).toPromise()
     ).resolves.not.toThrowError();
   });
 });

@@ -1,5 +1,5 @@
 {
-  "npmScope": "angular-plugins",
+  "npmScope": "angular-custom-builders",
   "implicitDependencies": {
     "workspace.json": "*",
     "package.json": {
@@ -24,6 +24,13 @@
     "aws-actions-e2e": {
       "tags": [],
       "implicitDependencies": ["aws-actions"]
+    },
+    "licenses": {
+      "tags": []
+    },
+    "licenses-e2e": {
+      "tags": [],
+      "implicitDependencies": ["licenses"]
     }
   },
   "tasksRunnerOptions": {

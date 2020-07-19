@@ -25,7 +25,7 @@ describe('Command Runner Builder', () => {
   it('can run', async () => {
     // A "run" can have multiple outputs, and contains progress information.
     const run = await architect.scheduleBuilder(
-      '@angular-plugins/aws-actions:build',
+      '@angular-custom-builders/aws-actions:build',
       options
     ); // We pass the logger for checking later.
 

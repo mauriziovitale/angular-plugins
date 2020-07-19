@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://json-schema.org/draft-07/schema",
+  "title": "Build builder",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name (without expension) of the file which will contain the report.",
+      "default": "license"
+    },
+    "type": {
+      "type": "string",
+      "description": "Define the output type, can be plain txt or json.",
+      "default": "txt"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "Define the output path.",
+      "default": "."
+    }
+  },
+  "required": []
+}

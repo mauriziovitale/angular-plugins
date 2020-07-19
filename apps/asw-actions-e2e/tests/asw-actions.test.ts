@@ -8,9 +8,9 @@ import {
 describe('aws-actions e2e', () => {
   it('should create aws-actions', async done => {
     const plugin = uniq('aws-actions');
-    ensureNxProject('@angular-plugins/aws-actions', 'dist/libs/aws-actions');
+    ensureNxProject('@angular-custom-builders/aws-actions', 'dist/libs/aws-actions');
     await runNxCommandAsync(
-      `generate @angular-plugins/aws-actions:pull ${plugin}`
+      `generate @angular-custom-builders/aws-actions:pull ${plugin}`
     );
 
     const result = await runNxCommandAsync(`build ${plugin}`);

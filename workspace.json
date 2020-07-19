@@ -135,10 +135,81 @@
           "builder": "@nrwl/nx-plugin:e2e",
           "options": {
             "target": "aws-actions:build",
-            "npmPackageName": "@angular-plugins/aws-actions",
+            "npmPackageName": "@angular-custom-builders/aws-actions",
             "pluginOutputPath": "dist/libs/aws-actions",
             "jestConfig": "apps/aws-actions-e2e/jest.config.js",
             "tsSpecConfig": "apps/aws-actions-e2e/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "licenses": {
+      "root": "libs/licenses",
+      "sourceRoot": "libs/licenses/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/licenses/tsconfig.lib.json",
+              "libs/licenses/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/licenses/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/licenses/jest.config.js",
+            "tsConfig": "libs/licenses/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/licenses",
+            "tsConfig": "libs/licenses/tsconfig.lib.json",
+            "packageJson": "libs/licenses/package.json",
+            "main": "libs/licenses/src/index.ts",
+            "assets": [
+              "libs/licenses/*.md",
+              {
+                "input": "./libs/licenses/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/licenses",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/licenses",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "licenses-e2e": {
+      "projectType": "application",
+      "root": "apps/licenses-e2e",
+      "sourceRoot": "apps/licenses-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "licenses:build",
+            "npmPackageName": "@angular-custom-builders/licenses",
+            "pluginOutputPath": "dist/libs/licenses",
+            "jestConfig": "apps/licenses-e2e/jest.config.js",
+            "tsSpecConfig": "apps/licenses-e2e/tsconfig.spec.json"
           }
         }
       }

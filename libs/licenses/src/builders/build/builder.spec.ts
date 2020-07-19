@@ -2,9 +2,9 @@ import { Architect } from '@angular-devkit/architect';
 import { TestingArchitectHost } from '@angular-devkit/architect/testing';
 import { schema } from '@angular-devkit/core';
 import { join } from 'path';
-import { AwsActionsPullSchema } from './schema';
+import { BuildBuilderSchema } from './schema';
 
-const options: AwsActionsPullSchema = {};
+const options: BuildBuilderSchema = {};
 
 describe('Command Runner Builder', () => {
   let architect: Architect;
@@ -25,10 +25,9 @@ describe('Command Runner Builder', () => {
   it('can run', async () => {
     // A "run" can have multiple outputs, and contains progress information.
     const run = await architect.scheduleBuilder(
-      '@anangular-custom-builders/aws-actions:build',
+      '@angular-custom-builders/licenses:build',
       options
-    ); // We pass the logger for checking later.
-
+    );
     // The "result" member (of type BuilderOutput) is the next output.
     const output = await run.result;
 
