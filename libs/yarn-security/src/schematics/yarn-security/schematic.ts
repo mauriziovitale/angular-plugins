@@ -77,8 +77,8 @@ export default function (options: YarnSecuritySchematicSchema): Rule {
           projectType,
         })
         .targets.add({
-          name: 'build',
-          builder: '@angular-custom-builders/yarn-security:build',
+          name: 'licenses',
+          builder: '@angular-custom-builders/yarn-security:licenses',
         });
     }),
     addProjectToNxJsonInTree(normalizedOptions.projectName, {
