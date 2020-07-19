@@ -1,0 +1,12 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "name": "yarn-security",
+  "version": "0.0.1",
+  "schematics": {
+    "yarn-security": {
+      "factory": "./src/schematics/yarn-security/schematic",
+      "schema": "./src/schematics/yarn-security/schema.json",
+      "description": "yarn-security schematic"
+    }
+  }
+}

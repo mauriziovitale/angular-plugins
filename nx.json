@@ -31,6 +31,13 @@
     "licenses-e2e": {
       "tags": [],
       "implicitDependencies": ["licenses"]
+    },
+    "yarn-security": {
+      "tags": []
+    },
+    "yarn-security-e2e": {
+      "tags": [],
+      "implicitDependencies": ["yarn-security"]
     }
   },
   "tasksRunnerOptions": {

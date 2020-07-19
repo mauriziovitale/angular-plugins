@@ -18,7 +18,10 @@
     "paths": {
       "@angular-custom-builders/lite-serve": ["libs/lite-serve/src/index.ts"],
       "@angular-custom-builders/aws-actions": ["libs/aws-actions/src/index.ts"],
-      "@angular-custom-builders/licenses": ["libs/licenses/src/index.ts"]
+      "@angular-custom-builders/licenses": ["libs/licenses/src/index.ts"],
+      "@angular-custom-builders/yarn-security": [
+        "libs/yarn-security/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

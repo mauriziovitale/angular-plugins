@@ -213,6 +213,77 @@
           }
         }
       }
+    },
+    "yarn-security": {
+      "root": "libs/yarn-security",
+      "sourceRoot": "libs/yarn-security/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/yarn-security/tsconfig.lib.json",
+              "libs/yarn-security/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/yarn-security/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/yarn-security/jest.config.js",
+            "tsConfig": "libs/yarn-security/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/yarn-security",
+            "tsConfig": "libs/yarn-security/tsconfig.lib.json",
+            "packageJson": "libs/yarn-security/package.json",
+            "main": "libs/yarn-security/src/index.ts",
+            "assets": [
+              "libs/yarn-security/*.md",
+              {
+                "input": "./libs/yarn-security/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./libs/yarn-security",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/yarn-security",
+                "glob": "builders.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yarn-security-e2e": {
+      "projectType": "application",
+      "root": "apps/yarn-security-e2e",
+      "sourceRoot": "apps/yarn-security-e2e/src",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "yarn-security:build",
+            "npmPackageName": "@angular-custom-builders/yarn-security",
+            "pluginOutputPath": "dist/libs/yarn-security",
+            "jestConfig": "apps/yarn-security-e2e/jest.config.js",
+            "tsSpecConfig": "apps/yarn-security-e2e/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {
