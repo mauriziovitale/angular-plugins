@@ -5,12 +5,12 @@ import { join } from 'path';
 
 import { YarnSecuritySchematicSchema } from './schema';
 
-describe('yarn-security schematic', () => {
+describe('yarn security licenses schematic', () => {
   let appTree: Tree;
   const options: YarnSecuritySchematicSchema = { name: 'test' };
 
   const testRunner = new SchematicTestRunner(
-    '@angular-custom-builders/yarn-security',
+    '@angular-custom-builders/licenses',
     join(__dirname, '../../../collection.json')
   );
 
@@ -21,7 +21,7 @@ describe('yarn-security schematic', () => {
   it('should run successfully', async () => {
     await expect(
       testRunner
-        .runSchematicAsync('yarn-security', options, appTree)
+        .runSchematicAsync('licenses', options, appTree)
         .toPromise()
     ).resolves.not.toThrowError();
   });

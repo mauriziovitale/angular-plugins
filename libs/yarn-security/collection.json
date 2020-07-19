@@ -3,10 +3,10 @@
   "name": "yarn-security",
   "version": "0.0.1",
   "schematics": {
-    "yarn-security": {
-      "factory": "./src/schematics/yarn-security/schematic",
-      "schema": "./src/schematics/yarn-security/schema.json",
-      "description": "yarn-security schematic"
+    "licenses": {
+      "factory": "./src/schematics/licenses/schematic",
+      "schema": "./src/schematics/licenses/schema.json",
+      "description": "yarn security licenses schematic"
     }
   }
 }

@@ -7,7 +7,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Name (without expension) of the file which will contain the report.",
+      "description": "Name (without extension) of the file which will contain the report.",
       "default": "license"
     },
     "type": {

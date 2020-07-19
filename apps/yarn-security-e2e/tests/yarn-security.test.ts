@@ -9,11 +9,11 @@ import {
 import * as fs from "fs"
 
 describe('yarn-security e2e', () => {
-  it('should create licenses', async (done) => {
-    const plugin = uniq('licenses');
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+  it('should create yarn-security', async (done) => {
+    const plugin = uniq('yarn-security');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     const result = await runNxCommandAsync(`licenses ${plugin}`);
@@ -23,10 +23,10 @@ describe('yarn-security e2e', () => {
   });
 
   it('should generate custom folder  licenses', async (done) => {
-    const plugin = uniq('licenses');
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    const plugin = uniq('yarn-security');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     const dir = 'my-folder';
@@ -43,11 +43,11 @@ describe('yarn-security e2e', () => {
   });
 
   it('should throw an error if the destination folder does not exist', async (done) => {
-    const plugin = uniq('licenses');
+    const plugin = uniq('yarn-security');
 
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     const dir = 'fake' 
@@ -57,10 +57,10 @@ describe('yarn-security e2e', () => {
   });
 
   it('should generate report with name licenses.txt by default ', async (done) => {
-    const plugin = uniq('licenses');
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    const plugin = uniq('yarn-security');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     await runNxCommandAsync(`licenses ${plugin}`);
@@ -71,10 +71,10 @@ describe('yarn-security e2e', () => {
   });
 
   it('should generate report in json format if option type json is provided', async (done) => {
-    const plugin = uniq('licenses');
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    const plugin = uniq('yarn-security');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     await runNxCommandAsync(`licenses ${plugin} --type=json`);
@@ -85,11 +85,11 @@ describe('yarn-security e2e', () => {
   });
 
   it('should generate report with custom name if option name is provided', async (done) => {
-    const plugin = uniq('licenses');
+    const plugin = uniq('yarn-security');
     const fileName = 'my-custom-report';
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     await runNxCommandAsync(`licenses ${plugin} --name=${fileName}`);
@@ -100,12 +100,12 @@ describe('yarn-security e2e', () => {
   });
 
   it('should generate report with custom name of type json if options are provided', async (done) => {
-    const plugin = uniq('licenses');
+    const plugin = uniq('yarn-security');
     const fileName = 'my-custom-report';
     const type = 'json';
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     await runNxCommandAsync(`licenses ${plugin} --name=${fileName} --type=${type}`);
@@ -116,11 +116,11 @@ describe('yarn-security e2e', () => {
   });
 
   xit('should generate report for a new dependency', async (done) => {
-    const plugin = uniq('licenses');
+    const plugin = uniq('yarn-security');
     const type = 'json';
-    ensureNxProject('@angular-custom-builders/licenses', 'dist/libs/licenses');
+    ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
     await runNxCommandAsync(
-      `generate @angular-custom-builders/licenses:licenses ${plugin}`
+      `generate @angular-custom-builders/yarn-security:licenses ${plugin}`
     );
 
     const packageJson = readJson('package.json');
@@ -149,13 +149,13 @@ describe('yarn-security e2e', () => {
 
   describe('--directory', () => {
     it('should create src in the specified directory', async (done) => {
-      const plugin = uniq('licenses');
+      const plugin = uniq('yarn-security');
       ensureNxProject(
-        '@angular-custom-builders/licenses',
-        'dist/libs/licenses'
+        '@angular-custom-builders/yarn-security',
+        'dist/libs/yarn-security'
       );
       await runNxCommandAsync(
-        `generate @angular-custom-builders/licenses:licenses ${plugin} --directory subdir`
+        `generate @angular-custom-builders/yarn-security:licenses ${plugin} --directory subdir`
       );
       expect(() =>
         checkFilesExist(`libs/subdir/${plugin}/src/index.ts`)
@@ -166,13 +166,13 @@ describe('yarn-security e2e', () => {
 
   describe('--tags', () => {
     it('should add tags to nx.json', async (done) => {
-      const plugin = uniq('licenses');
+      const plugin = uniq('yarn-security');
       ensureNxProject(
-        '@angular-custom-builders/licenses',
-        'dist/libs/licenses'
+        '@angular-custom-builders/yarn-security',
+        'dist/libs/yarn-security'
       );
       await runNxCommandAsync(
-        `generate @angular-custom-builders/licenses:licenses ${plugin} --tags e2etag,e2ePackage`
+        `generate @angular-custom-builders/yarn-security:licenses ${plugin} --tags e2etag,e2ePackage`
       );
       const nxJson = readJson('nx.json');
       expect(nxJson.projects[plugin].tags).toEqual(['e2etag', 'e2ePackage']);
