@@ -8,7 +8,7 @@ import {
 } from '@nrwl/nx-plugin/testing';
 import * as fs from "fs"
 
-describe('yarn-security e2e', () => {
+describe('yarn-security licenses e2e', () => {
   it('should create yarn-security', async (done) => {
     const plugin = uniq('yarn-security');
     ensureNxProject('@angular-custom-builders/yarn-security', 'dist/libs/yarn-security');
