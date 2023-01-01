@@ -42,7 +42,7 @@
   "devDependencies": {
     "@nrwl/eslint-plugin-nx": "9.0.1",
     "@nrwl/jest": "9.0.1",
-    "@nrwl/nx-plugin": "^9.0.1",
+    "@nrwl/nx-plugin": "^9.8.0",
     "@nrwl/workspace": "9.0.1",
     "@types/jest": "24.0.9",
     "@types/node": "~8.9.4",
